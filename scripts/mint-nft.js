@@ -26,4 +26,38 @@ async function mintNFT(tokenURI) {
       .createNFT("0x7155A74e2CC891808175B1e32E75359fcFd95C0f", tokenURI)
       .encodeABI(), // call the createNFT function from our OsunRiverNFT.sol file and pass the account that should receive the minted NFT.
   };
+
+  const signPromise = alchemyWeb3.eth.accounts.signTransaction(
+    tx,
+    METAMASK_PRIVATE_KEY
+  );
+  signPromise
+    .then((signedTx) => {
+      alchemyWeb3.eth.sendSignedTransaction(
+        signedTx.rawTransaction,
+        function (err, hash) {
+          if (!err) {
+            console.log(
+              "The hash of our transaction is: ",
+              hash,
+              "\nCheck Alchemy's Mempool to view the status of our transaction!"
+            );
+          } else {
+            console.log(
+              "Something went wrong when submitting our transaction:",
+              err
+            );
+          }
+        }
+      );
+    })
+    .catch((err) => {
+      console.log("Promise failed:", err);
+    });
 }
+
+const babyNftMetaDataJsonIpvfs =
+  "https://ipfs.io/ipfs/bafkreihsfnioezl37orqr6wngxh4rpfe7vb2niwy5vmwcsdrrbj25wcqgi";
+
+mintNFT(babyNftMetaDataJsonIpvfs);
+// output: trans hash: 0x313a3e6c7d4ec15319822555a45ea230388e39a55245d9066c1fb043943cb0d3

@@ -14,5 +14,9 @@ module.exports = {
       url: API_URL,
       accounts: [`0x${METAMASK_PRIVATE_KEY}`],
     },
+    mainnet: {
+      url: API_URL,
+      accounts: [`0x${METAMASK_PRIVATE_KEY}`],
+    },
   },
 };
