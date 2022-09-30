@@ -13,13 +13,13 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 
 // Accessing the Ownable method ensures that only the creator of the smart contract can interact with it
 
-contract ApolloNFT is ERC721URIStorage, Ownable {
+contract BabyNFT is ERC721URIStorage, Ownable {
     using Counters for Counters.Counter;
     Counters.Counter private _tokenIds;
 
     // The name and symbol for the NFT
 
-    constructor() ERC721("ApolloNFT", "APNFT") {}
+    constructor() ERC721("BabyNFT", "BBNFT") {}
 
     // create a function to mint/create the NFT
     // The receiver takes a type of address. This is the wallet address
