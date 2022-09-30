@@ -1,26 +1,25 @@
 //Contract based on https://docs.openzeppelin.com/contracts/3.x/erc721
 // SPDX-License-Identifier: MIT
 
-pragma solidity ^0.7.3;
+pragma solidity ^0.8.0;
 
 // implements the ERC721 Standard
 
 // implements the ERC721 standard
-import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
+import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 // keeps track of the number of tokens issued
 import "@openzeppelin/contracts/utils/Counters.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
 // Accessing the Ownable method ensures that only the creator of the smart contract can interact with it
 
-
-contract ApolloNFT is ERC721, Ownable {
+contract ApolloNFT is ERC721URIStorage, Ownable {
     using Counters for Counters.Counter;
     Counters.Counter private _tokenIds;
 
     // The name and symbol for the NFT
 
-    constructor() public ERC721("ApolloNFT", "APNFT) {}
+    constructor() ERC721("ApolloNFT", "APNFT") {}
 
     // create a function to mint/create the NFT
     // The receiver takes a type of address. This is the wallet address
@@ -28,19 +27,19 @@ contract ApolloNFT is ERC721, Ownable {
 
     // tokenURI takes a string that contains metadata about the NFT
 
-    function createNFT(address receiver, string memeory tokenURI)
-    public onlyOwner
-    returns (uint256)
+    function createNFT(address receiver, string memory tokenURI)
+        public
+        onlyOwner
+        returns (uint256)
+    {
+        _tokenIds.increment();
 
-{
-    _tokenIds.increment();
+        uint256 newItemId = _tokenIds.current();
+        _mint(receiver, newItemId);
+        _setTokenURI(newItemId, tokenURI);
 
-    uint256 newItemId = _tokenIds.current();
-    _mint(receiver, newItemId);
-    _setTokenURI(newItemId, tokenURI);
+        // returns the id for the newly created token
 
-    // returns the id for the newly created token
-
-    return newItemId;
-}
+        return newItemId;
+    }
 }
