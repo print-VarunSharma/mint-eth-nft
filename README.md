@@ -14,6 +14,14 @@ npx hardhat node
 npx hardhat run scripts/deploy.js
 ```
 
+Chose your Network carefully.
+npx hardhat run scripts/deploy.js --network ropsten to deploy on the test chain
+npx hardhat run scripts/deploy.js --network main to deploy on the live Eth chain
+
+Note:
+
+- ropsten testnet will be deprecated in Oct of 2022.
+
 ## Articles
 
 - https://blog.logrocket.com/how-to-create-nfts-with-javascript/

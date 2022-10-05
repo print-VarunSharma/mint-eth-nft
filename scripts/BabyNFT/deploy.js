@@ -6,7 +6,7 @@ async function main() {
 
   console.log("Account balance:", (await deployer.getBalance()).toString());
 
-  const BBNFT = await ethers.getContractFactory("ENTER NFT NAME");
+  const BBNFT = await ethers.getContractFactory("BabyNFT");
 
   // Start Deployment, returning a promise that resolves to a contract object
   const bbnft = await BBNFT.deploy();
