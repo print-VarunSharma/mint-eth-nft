@@ -6,12 +6,12 @@ async function main() {
 
   console.log("Account balance:", (await deployer.getBalance()).toString());
 
-  const BBNFT = await ethers.getContractFactory("ENTER NFT NAME");
+  const ApolloNFT = await ethers.getContractFactory("ApolloNFT");
 
   // Start Deployment, returning a promise that resolves to a contract object
-  const bbnft = await BBNFT.deploy();
+  const apollonft = await ApolloNFT.deploy();
 
-  console.log("Contract deployed to address:", bbnft.address);
+  console.log("Contract deployed to address:", apollonft.address);
 }
 
 main()

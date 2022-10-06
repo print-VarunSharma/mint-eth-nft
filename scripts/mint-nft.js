@@ -2,9 +2,14 @@ require("dotenv").config();
 const API_URL = process.env.API_URL;
 const { createAlchemyWeb3 } = require("@alch/alchemy-web3");
 const alchemyWeb3 = createAlchemyWeb3(API_URL);
-const contract = require("../artifacts/contracts/BabyNFT.sol/BabyNFT.json");
+const contract = require("../artifacts/contracts/ApolloNFT.sol/ApolloNFT.json");
 
-const contractAddress = "0x0577BFE03AfF21151b94f4afEeDf82142F02aF0F";
+// prod mainnet" 0x0122b7BbfAe716854AA1Fadc084c623bc453F62d
+
+// goerli 0xe125415007FF278C64C5756d536d25739a05631c
+
+// prod main net 2: 0xcFF1D1Fa6357AE60E64aB43C1C9a6B75020D8283
+const contractAddress = "0xcFF1D1Fa6357AE60E64aB43C1C9a6B75020D8283";
 const nftContract = new alchemyWeb3.eth.Contract(contract.abi, contractAddress);
 
 const METAMASK_PUBLIC_KEY = process.env.METAMASK_PUBLIC_KEY;
@@ -59,6 +64,9 @@ async function mintNFT(tokenURI) {
 const babyNftMetaDataJsonIpvfs =
   "https://ipfs.io/ipfs/bafkreic22bwziqjpwvx6kgp7o4i7y7a6eo6aqjmliozkaq65txrsewwuyi";
 
-mintNFT(babyNftMetaDataJsonIpvfs);
+const apolloMetaData =
+  "https://ipfs.io/ipfs/bafkreigk6jvk22abj5nzseyjdkmpphzok4qkaa56irrqtqci3mnlgeus7m";
+mintNFT(apolloMetaData);
 // output: trans hash: 0x313a3e6c7d4ec15319822555a45ea230388e39a55245d9066c1fb043943cb0d3
-// prod output: 0x751e0b63c5acd93bb671596b8ed226c1c1983e80b0b7cf5d78854fa5bbb7a745
+
+// prod output: 0x28ef1335d89da1aae2342a14f146a6c0704489a0e0ed4e1e4e1b80b22896adb4

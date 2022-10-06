@@ -16,7 +16,9 @@ npx hardhat run scripts/deploy.js
 
 Chose your Network carefully.
 npx hardhat run scripts/deploy.js --network ropsten to deploy on the test chain
-npx hardhat run scripts/deploy.js --network main to deploy on the live Eth chain
+npx hardhat run scripts/deploy.js --network goerli to deploy on the test chain
+
+npx hardhat run scripts/deploy.js --network mainnet to deploy on the live Eth chain
 
 Note:
 
